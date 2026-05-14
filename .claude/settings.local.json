@@ -1,0 +1,16 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(curl -s --compressed \"https://api.anthropic.com/v1/design/h/vEMFwjeFLCBWShUNRPEetQ?open_file=Portfolio+B.html\" -o /tmp/design_portfolio.html)",
+      "Read(//tmp/**)",
+      "Bash(curl -s \"https://api.anthropic.com/v1/design/h/vEMFwjeFLCBWShUNRPEetQ?open_file=Portfolio+B.html\")",
+      "Bash(gunzip)",
+      "Bash(grep -n \"porfolio-design/project/\" /tmp/design_portfolio_extracted.html | head -30)",
+      "Read(//private/tmp/**)",
+      "Bash(tar -tf /tmp/design_bundle.tar)",
+      "Bash(tar -xf design_bundle.tar)",
+      "Bash(npm run *)",
+      "Bash(curl -s http://localhost:5173)"
+    ]
+  }
+}
