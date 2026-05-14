@@ -384,7 +384,14 @@ function Hero() {
 // ===== About =====
 
 function About() {
-  const otherTools = ['Firebase', 'D3', 'Figma', 'Motion', 'Git', 'CI/CD']
+  const otherTools = [
+    'Firebase',
+    'Playwright',
+    'Supabase',
+    'Figma',
+    'Git',
+    'CI/CD',
+  ]
   return (
     <section
       id="about"
