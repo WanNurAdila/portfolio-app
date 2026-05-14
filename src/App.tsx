@@ -1,9 +1,35 @@
-import { useState, useEffect, useRef } from 'react'
+import { useState, useEffect, useRef, RefObject } from 'react'
 import './App.css'
+
+// ===== Types =====
+
+interface Project {
+  id: string
+  num: string
+  name: string
+  role: string
+  year: string
+  stack: string[]
+  type: string
+  tag: string
+  summary: string
+  detail: string
+  repo: string | null
+  accentLabel: string
+  bg: string
+  fg: string
+}
+
+interface ExperienceEntry {
+  year: string
+  role: string
+  org: string
+  note: string
+}
 
 // ===== Data =====
 
-const PROJECTS = [
+const PROJECTS: Project[] = [
   {
     id: 'Rhythm',
     num: '01',
@@ -60,7 +86,7 @@ const PROJECTS = [
   // },
 ]
 
-const EXPERIENCE = [
+const EXPERIENCE: ExperienceEntry[] = [
   {
     year: '2024 — Now',
     role: 'Application Developer',
@@ -85,8 +111,8 @@ const CONTACT_EMAIL = 'wanadila94@yahoo.com'
 
 // ===== Hooks =====
 
-function useReveal() {
-  const ref = useRef(null)
+function useReveal(): RefObject<HTMLElement | null> {
+  const ref = useRef<HTMLElement | null>(null)
   useEffect(() => {
     const el = ref.current
     if (!el) return
@@ -123,28 +149,39 @@ function useReveal() {
 
 // ===== Shared components =====
 
+interface RevealProps {
+  as?: React.ElementType
+  children?: React.ReactNode
+  stagger?: boolean
+  style?: React.CSSProperties
+  className?: string
+  id?: string
+}
+
 function Reveal({
   as: Tag = 'div',
   children,
   stagger,
   style,
   className = '',
-  ...rest
-}) {
+}: RevealProps) {
   const ref = useReveal()
   return (
     <Tag
-      ref={ref}
+      ref={ref as React.Ref<HTMLElement>}
       className={`${stagger ? 'pf-reveal-stagger' : 'pf-reveal'} ${className}`}
       style={style}
-      {...rest}
     >
       {children}
     </Tag>
   )
 }
 
-function ArrowUpRight({ size = 14 }) {
+interface ArrowUpRightProps {
+  size?: number
+}
+
+function ArrowUpRight({ size = 14 }: ArrowUpRightProps) {
   return (
     <svg
       width={size}
@@ -164,7 +201,14 @@ function ArrowUpRight({ size = 14 }) {
 
 // ===== TopBar =====
 
-function TopBar({ theme, setTheme }) {
+type Theme = 'light' | 'dark'
+
+interface TopBarProps {
+  theme: Theme
+  setTheme: (theme: Theme) => void
+}
+
+function TopBar({ theme, setTheme }: TopBarProps) {
   return (
     <header
       className="pf-topbar"
@@ -311,10 +355,9 @@ function Hero() {
           </div>
           <div style={{ paddingBottom: 24 }}>
             <p style={{ fontSize: 19, lineHeight: 1.55, maxWidth: 480 }}>
-              Wan Adila — independent front-end developer based in Kuala Lumpur,
+              An independent front-end developer based in Kuala Lumpur,
               specializing in Flutter mobile apps and considered React
-              interfaces. This is a working index of recent projects and the way
-              I think about them.
+              interfaces. Below: recent work, and how I think about building it.
             </p>
             <div
               style={{
@@ -353,7 +396,7 @@ function Hero() {
           {[
             { k: 'Discipline', v: 'Front-end, mobile + web' },
             { k: 'Speciality', v: 'Flutter, React, Playwright' },
-            { k: 'Location', v: 'Dengkil, MYS' },
+            { k: 'Location', v: 'Kuala Lumpur, MYS' },
             { k: 'Contact', v: CONTACT_EMAIL },
           ].map((c) => (
             <div key={c.k} className="pf-stat-card">
@@ -433,14 +476,14 @@ function About() {
             style={{ fontSize: 16, lineHeight: 1.7, color: 'var(--paper-dim)' }}
           >
             <p style={{ marginBottom: 16 }}>
-              Three years building user-facing things. Most of my hours go to
+              Five years building user-facing things. Most of my hours go to
               Flutter — its declarative model fits the way I think about UI as a
               tree of small, replaceable parts.
             </p>
             <p>
               On the web side, React with TypeScript, careful state, and motion
-              that earns its keep. Off the keyboard, I read a lot of typography
-              journals and over-think coffee brewing.
+              that earns its keep. Off the keyboard, Off the keyboard, I read
+              fiction, lose hours to games, and overthink coffee brewing..
             </p>
           </div>
         </div>
@@ -492,7 +535,11 @@ function About() {
 
 // ===== Work =====
 
-function ProjectEntry({ project }) {
+interface ProjectEntryProps {
+  project: Project
+}
+
+function ProjectEntry({ project }: ProjectEntryProps) {
   const [hover, setHover] = useState(false)
 
   return (
@@ -1090,7 +1137,7 @@ function Footer() {
 // ===== Root =====
 
 export default function App() {
-  const [theme, setTheme] = useState('light')
+  const [theme, setTheme] = useState<Theme>('light')
 
   return (
     <div className={`pf-root pf-${theme}`}>
