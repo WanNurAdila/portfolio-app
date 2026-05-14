@@ -91,7 +91,7 @@ const EXPERIENCE: ExperienceEntry[] = [
     year: '2024 — Now',
     role: 'Application Developer',
     org: 'Ukuya Sdn Bhd',
-    note: 'Web development + Playwright E2E automation',
+    note: 'Flutter Web development + Playwright E2E automation',
   },
   {
     year: '2022 — 2024',
@@ -476,7 +476,7 @@ function About() {
             style={{ fontSize: 16, lineHeight: 1.7, color: 'var(--paper-dim)' }}
           >
             <p style={{ marginBottom: 16 }}>
-              Five years building user-facing things. Most of my hours go to
+              More than five years building user-facing things. Most of my hours go to
               Flutter, its declarative model fits the way I think about UI as a
               tree of small, replaceable parts.
             </p>
