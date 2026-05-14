@@ -4,45 +4,45 @@ import './App.css'
 // ===== Data =====
 
 const PROJECTS = [
-  {
-    id: 'lumi',
-    num: '01',
-    name: 'Lumi',
-    role: 'Solo · Design + Build',
-    year: '2025',
-    stack: ['Flutter', 'Dart', 'Riverpod', 'Firebase'],
-    type: 'Mobile App',
-    tag: 'iOS · Android',
-    summary:
-      'A warm, quiet habit tracker. Rituals replace streaks; reflection replaces guilt.',
-    detail:
-      'Designed and shipped a Flutter app focused on slow, deliberate routines. Custom motion, on-device storage, weekly reflection prompts. Currently in TestFlight.',
-    repo: 'WanNurAdila/lumi',
-    accentLabel: 'F-01',
-    bg: '#3d2a1a',
-    fg: '#efd5b0',
-  },
-  {
-    id: 'pulse',
-    num: '02',
-    name: 'Pulse',
-    role: 'Solo · Front-end',
-    year: '2025',
-    stack: ['React', 'TypeScript', 'Tailwind'],
-    type: 'Dashboard',
-    tag: 'Web · Desktop',
-    summary:
-      'An analytics dashboard with the speed of a terminal and the grace of an editorial.',
-    detail:
-      'Custom data-viz components, virtualized tables, command-K everywhere. Built to be the quietest tab in your browser while doing the most work.',
-    repo: 'WanNurAdila/pulse',
-    accentLabel: 'R-02',
-    bg: '#1f2a2c',
-    fg: '#d8e8e0',
-  },
+  // {
+  //   id: 'lumi',
+  //   num: '01',
+  //   name: 'Lumi',
+  //   role: 'Solo · Design + Build',
+  //   year: '2025',
+  //   stack: ['Flutter', 'Dart', 'Riverpod', 'Firebase'],
+  //   type: 'Mobile App',
+  //   tag: 'iOS · Android',
+  //   summary:
+  //     'A warm, quiet habit tracker. Rituals replace streaks; reflection replaces guilt.',
+  //   detail:
+  //     'Designed and shipped a Flutter app focused on slow, deliberate routines. Custom motion, on-device storage, weekly reflection prompts. Currently in TestFlight.',
+  //   repo: 'WanNurAdila/lumi',
+  //   accentLabel: 'F-01',
+  //   bg: '#3d2a1a',
+  //   fg: '#efd5b0',
+  // },
+  // {
+  //   id: 'pulse',
+  //   num: '02',
+  //   name: 'Pulse',
+  //   role: 'Solo · Front-end',
+  //   year: '2025',
+  //   stack: ['React', 'TypeScript', 'Tailwind'],
+  //   type: 'Dashboard',
+  //   tag: 'Web · Desktop',
+  //   summary:
+  //     'An analytics dashboard with the speed of a terminal and the grace of an editorial.',
+  //   detail:
+  //     'Custom data-viz components, virtualized tables, command-K everywhere. Built to be the quietest tab in your browser while doing the most work.',
+  //   repo: 'WanNurAdila/pulse',
+  //   accentLabel: 'R-02',
+  //   bg: '#1f2a2c',
+  //   fg: '#d8e8e0',
+  // },
   {
     id: 'tbd',
-    num: '03',
+    num: '01',
     name: 'In Development',
     role: 'Concept · Exploring',
     year: '2025',
