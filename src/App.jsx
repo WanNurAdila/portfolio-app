@@ -4,24 +4,24 @@ import './App.css'
 // ===== Data =====
 
 const PROJECTS = [
-  // {
-  //   id: 'lumi',
-  //   num: '01',
-  //   name: 'Lumi',
-  //   role: 'Solo · Design + Build',
-  //   year: '2025',
-  //   stack: ['Flutter', 'Dart', 'Riverpod', 'Firebase'],
-  //   type: 'Mobile App',
-  //   tag: 'iOS · Android',
-  //   summary:
-  //     'A warm, quiet habit tracker. Rituals replace streaks; reflection replaces guilt.',
-  //   detail:
-  //     'Designed and shipped a Flutter app focused on slow, deliberate routines. Custom motion, on-device storage, weekly reflection prompts. Currently in TestFlight.',
-  //   repo: 'WanNurAdila/lumi',
-  //   accentLabel: 'F-01',
-  //   bg: '#3d2a1a',
-  //   fg: '#efd5b0',
-  // },
+  {
+    id: 'Rhythm',
+    num: '01',
+    name: 'Rhythm App',
+    role: 'Solo · Design + Build',
+    year: '2026',
+    stack: ['Flutter', 'Bloc Architecture', 'Playwright', 'Supabase'],
+    type: 'Mobile App',
+    tag: 'iOS · Android',
+    summary:
+      'A warm, quiet habit tracker. Rituals replace streaks; reflection replaces guilt.',
+    detail:
+      'Designed and shipped a Flutter app focused on slow, deliberate routines. Custom motion, on-device storage, weekly reflection prompts. Currently in TestFlight.',
+    repo: 'https://github.com/WanNurAdila/rhythm-app',
+    accentLabel: 'F-01',
+    bg: '#3d2a1a',
+    fg: '#efd5b0',
+  },
   // {
   //   id: 'pulse',
   //   num: '02',
@@ -40,24 +40,24 @@ const PROJECTS = [
   //   bg: '#1f2a2c',
   //   fg: '#d8e8e0',
   // },
-  {
-    id: 'tbd',
-    num: '01',
-    name: 'In Development',
-    role: 'Concept · Exploring',
-    year: '2025',
-    stack: ['TBD'],
-    type: 'Coming Soon',
-    tag: 'Sketching',
-    summary:
-      'Third piece in progress. Currently between two directions — letting the idea cure.',
-    detail:
-      'Possible directions: a tactile metronome for writers, or a small CLI for journaling.',
-    repo: null,
-    accentLabel: '???',
-    bg: '#2a1f1a',
-    fg: '#c9bca5',
-  },
+  // {
+  //   id: 'tbd',
+  //   num: '01',
+  //   name: 'In Development',
+  //   role: 'Concept · Exploring',
+  //   year: '2026',
+  //   stack: ['TBD'],
+  //   type: 'Coming Soon',
+  //   tag: 'Sketching',
+  //   summary:
+  //     'Third piece in progress. Currently between two directions — letting the idea cure.',
+  //   detail:
+  //     'Possible directions: a tactile metronome for writers, or a small CLI for journaling.',
+  //   repo: null,
+  //   accentLabel: '???',
+  //   bg: '#2a1f1a',
+  //   fg: '#c9bca5',
+  // },
 ]
 
 const EXPERIENCE = [
@@ -280,7 +280,7 @@ function Hero() {
                 marginBottom: 28,
               }}
             >
-              Volume 01 · 2025
+              Volume 01 · 2026
             </div>
             <h1
               className="pf-display pf-hero-h1"
@@ -345,21 +345,18 @@ function Hero() {
             display: 'grid',
             gridTemplateColumns: 'repeat(4, 1fr)',
             gap: 1,
+            background: 'var(--rule-strong)',
             borderTop: '1px solid var(--rule-strong)',
             borderBottom: '1px solid var(--rule-strong)',
-            background: 'var(--rule)',
           }}
         >
           {[
             { k: 'Discipline', v: 'Front-end, mobile + web' },
-            { k: 'Speciality', v: 'Flutter, React, motion' },
-            { k: 'Location', v: 'Kuala Lumpur, MYS' },
+            { k: 'Speciality', v: 'Flutter, React, Playwright' },
+            { k: 'Location', v: 'Dengkil, MYS' },
             { k: 'Contact', v: CONTACT_EMAIL },
           ].map((c) => (
-            <div
-              key={c.k}
-              style={{ background: 'var(--paper)', padding: '20px 24px' }}
-            >
+            <div key={c.k} className="pf-stat-card">
               <div
                 className="pf-mono"
                 style={{
@@ -736,7 +733,7 @@ function Work() {
               color: 'var(--paper-dim)',
             }}
           >
-            Three entries · MAY 2025
+            Three entries · MAY 2026
           </div>
         </div>
       </Reveal>
@@ -1081,7 +1078,7 @@ function Footer() {
         color: 'var(--paper-dim)',
       }}
     >
-      <span>© WAN ADILA 2025</span>
+      <span>© WAN ADILA 2026</span>
       <span style={{ textAlign: 'center' }}>
         Set in Space Grotesk &amp; Inter
       </span>

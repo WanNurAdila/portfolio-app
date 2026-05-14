@@ -193,8 +193,13 @@
     color 200ms,
     transform 200ms;
 }
+.pf-dark .pf-email-btn {
+  background: var(--paper);
+  color: var(--ink);
+}
 .pf-email-btn:hover {
   background: var(--accent-deep);
+  color: var(--paper);
   transform: translateY(-1px);
 }
 
@@ -214,6 +219,15 @@
 .pf-mid-cta:hover {
   background: var(--ink);
   color: var(--paper);
+}
+
+/* ===== Stat card (hero) ===== */
+.pf-stat-card {
+  background: var(--paper);
+  padding: 20px 24px;
+}
+.pf-dark .pf-stat-card {
+  background: var(--ink);
 }
 
 /* ===== Contact link hover ===== */
