@@ -811,6 +811,7 @@ function Work() {
 
 // ===== Mid-page CTA =====
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 function MidCTA() {
   return (
     <section style={{ borderTop: '1px solid var(--rule-strong)' }}>
@@ -1145,7 +1146,7 @@ export default function App() {
       <Hero />
       <About />
       <Work />
-      <MidCTA />
+      {/* <MidCTA /> */}
       <Experience />
       <Contact />
       <Footer />
