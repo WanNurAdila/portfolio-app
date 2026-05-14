@@ -36,14 +36,14 @@ const PROJECTS: Project[] = [
     name: 'Rhythm App',
     role: 'Solo · Design + Build',
     year: '2026',
-    stack: ['Flutter', 'Bloc Architecture', 'Playwright', 'Supabase'],
+    stack: ['Flutter', 'Bloc Architecture', 'Supabase', 'Claude'],
     type: 'Mobile App',
-    tag: 'iOS · Android',
+    tag: 'Flutter · Android',
     summary:
       'A warm, quiet habit tracker. Rituals replace streaks; reflection replaces guilt.',
     detail:
-      'Designed and shipped a Flutter app focused on slow, deliberate routines. Custom motion, on-device storage, weekly reflection prompts. Currently in TestFlight.',
-    repo: 'https://github.com/WanNurAdila/rhythm-app',
+      'A Flutter app focused on slow, deliberate routines. Custom motion, on-device storage, weekly reflection prompts. Designed in Claude Design. A portfolio build of the Android APK and an iOS walkthrough are on the repo.',
+    repo: 'WanNurAdila/rhythm-app',
     accentLabel: 'F-01',
     bg: '#3d2a1a',
     fg: '#efd5b0',
@@ -469,7 +469,7 @@ function About() {
               letterSpacing: '-0.02em',
             }}
           >
-            I treat interface work as a kind of editing — choosing what stays,
+            I treat interface work as a kind of editing. Choosing what stays,
             what goes, and the exact weight of a heading.
           </p>
           <div
@@ -477,7 +477,7 @@ function About() {
           >
             <p style={{ marginBottom: 16 }}>
               Five years building user-facing things. Most of my hours go to
-              Flutter — its declarative model fits the way I think about UI as a
+              Flutter, its declarative model fits the way I think about UI as a
               tree of small, replaceable parts.
             </p>
             <p>
