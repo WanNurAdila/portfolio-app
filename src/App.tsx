@@ -476,14 +476,14 @@ function About() {
             style={{ fontSize: 16, lineHeight: 1.7, color: 'var(--paper-dim)' }}
           >
             <p style={{ marginBottom: 16 }}>
-              More than five years building user-facing things. Most of my hours go to
-              Flutter, its declarative model fits the way I think about UI as a
-              tree of small, replaceable parts.
+              More than five years building user-facing things. Most of my hours
+              go to Flutter, its declarative model fits the way I think about UI
+              as a tree of small, replaceable parts.
             </p>
             <p>
               On the web side, React with TypeScript, careful state, and motion
-              that earns its keep. Off the keyboard, Off the keyboard, I read
-              fiction, lose hours to games, and overthink coffee brewing..
+              that earns its keep. Off the keyboard, I read fiction, lose hours
+              to games, and overthink coffee brewing..
             </p>
           </div>
         </div>
