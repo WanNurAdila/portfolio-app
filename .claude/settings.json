@@ -1,0 +1,28 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(curl -sL \"https://api.anthropic.com/v1/design/h/_KakIRLQd2sERzisPTztTQ?open_file=Portfolio+B.html\" -H \"Accept-Encoding: identity\")",
+      "Bash(curl -sv \"https://api.anthropic.com/v1/design/h/_KakIRLQd2sERzisPTztTQ\")",
+      "Bash(gunzip -c \"/Users/wanadila/.claude/projects/-Users-wanadila-Github-Repo-Personal-portfolio-app/c38cf297-9f8c-48a9-8f45-1598ab1e0168/tool-results/webfetch-1778996351861-gg31dn.bin\")",
+      "Bash(tar -xO \"porfolio-design/project/Portfolio B.html\")",
+      "Bash(tar -xO \"porfolio-design/project/portfolio-b.jsx\")",
+      "Bash(tar -xO \"porfolio-design/project/styles.css\")",
+      "Bash(find /tmp -name \"*.pdf\" 2>/dev/null; find ~/Downloads -name \"*.pdf\" 2>/dev/null | head -5)",
+      "Read(//Users/wanadila/Downloads/**)",
+      "Bash(find ~/Desktop ~/Documents -name \"*wan-nur-adila-front-end-engineer*\" 2>/dev/null; ls -la ~/Downloads/wan-adila-resume.pdf ~/Downloads/resume-Wan-Nur-Adila.pdf ~/Downloads/wan-nur-adila-resume-2026.pdf)",
+      "Read(//Users/wanadila/Desktop/**)",
+      "Bash(cp ~/Desktop/wan-nur-adila-front-end-engineer-resume.pdf /Users/wanadila/Github-Repo/Personal/portfolio-app/public/wan-adila-resume.pdf)",
+      "Bash(gunzip -c \"/Users/wanadila/.claude/projects/-Users-wanadila-Github-Repo-Personal-portfolio-app/44ba889b-d422-4c81-b1ed-f548679cb10d/tool-results/webfetch-1779000397222-ys3m1w.bin\")",
+      "Bash(tar -x -O --include=\"*/Portfolio B.html\")",
+      "Bash(tar -x -O --include=\"*/portfolio-b.jsx\")",
+      "Bash(gunzip -c \"/Users/wanadila/.claude/projects/-Users-wanadila-Github-Repo-Personal-portfolio-app/a6a9a12a-5078-43eb-89bd-057aea1e8425/tool-results/webfetch-1779005173698-iexf12.bin\")",
+      "Bash(gunzip -c \"/Users/wanadila/.claude/projects/-Users-wanadila-Github-Repo-Personal-portfolio-app/a6a9a12a-5078-43eb-89bd-057aea1e8425/tool-results/webfetch-1779005173698-iexf12.bin\" > /tmp/design-bundle.tar && file /tmp/design-bundle.tar && ls -la /tmp/design-bundle.tar)",
+      "Bash(tar -tf /tmp/design-bundle.tar)",
+      "Bash(tar -xf /tmp/design-bundle.tar -C /tmp/)"
+    ],
+    "additionalDirectories": [
+      "/Users/wanadila/Desktop",
+      "/tmp"
+    ]
+  }
+}

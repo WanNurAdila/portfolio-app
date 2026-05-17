@@ -1,5 +1,11 @@
 import { useState, useEffect, useRef, RefObject } from 'react'
 import './App.css'
+import rhythmBanner from './assets/rhythm-app-banner.png'
+import archiveWeb01 from './assets/archive-web-01.png'
+import archiveWeb02 from './assets/archive-web-02.png'
+import archiveWeb03 from './assets/archive-web-03.png'
+import archiveWeb04 from './assets/archive-web-04.png'
+import archiveWeb05 from './assets/archive-web-05.png'
 
 // ===== Types =====
 
@@ -18,6 +24,7 @@ interface Project {
   accentLabel: string
   bg: string
   fg: string
+  bannerImg?: string
 }
 
 interface ExperienceEntry {
@@ -25,6 +32,18 @@ interface ExperienceEntry {
   role: string
   org: string
   note: string
+}
+
+interface ArchiveProject {
+  id: string
+  kind: 'web' | 'app'
+  name: string
+  company: string
+  role: string
+  year: string
+  summary: string
+  stack: string[]
+  aspect: string
 }
 
 // ===== Data =====
@@ -47,43 +66,43 @@ const PROJECTS: Project[] = [
     accentLabel: 'F-01',
     bg: '#3d2a1a',
     fg: '#efd5b0',
+    bannerImg: rhythmBanner,
   },
-  // {
-  //   id: 'pulse',
-  //   num: '02',
-  //   name: 'Pulse',
-  //   role: 'Solo · Front-end',
-  //   year: '2025',
-  //   stack: ['React', 'TypeScript', 'Tailwind'],
-  //   type: 'Dashboard',
-  //   tag: 'Web · Desktop',
-  //   summary:
-  //     'An analytics dashboard with the speed of a terminal and the grace of an editorial.',
-  //   detail:
-  //     'Custom data-viz components, virtualized tables, command-K everywhere. Built to be the quietest tab in your browser while doing the most work.',
-  //   repo: 'WanNurAdila/pulse',
-  //   accentLabel: 'R-02',
-  //   bg: '#1f2a2c',
-  //   fg: '#d8e8e0',
-  // },
-  // {
-  //   id: 'tbd',
-  //   num: '01',
-  //   name: 'In Development',
-  //   role: 'Concept · Exploring',
-  //   year: '2026',
-  //   stack: ['TBD'],
-  //   type: 'Coming Soon',
-  //   tag: 'Sketching',
-  //   summary:
-  //     'Third piece in progress. Currently between two directions — letting the idea cure.',
-  //   detail:
-  //     'Possible directions: a tactile metronome for writers, or a small CLI for journaling.',
-  //   repo: null,
-  //   accentLabel: '???',
-  //   bg: '#2a1f1a',
-  //   fg: '#c9bca5',
-  // },
+  {
+    id: 'tbd',
+    num: '02',
+    name: 'In Development',
+    role: 'Concept · Exploring',
+    year: '2026',
+    stack: ['TBD'],
+    type: 'Coming Soon',
+    tag: 'Sketching',
+    summary:
+      'Second piece in progress. Currently between two directions — letting the idea cure.',
+    detail: 'Possible directions: a dashboard version of Pulse.',
+    repo: null,
+    accentLabel: '???',
+    bg: '#2a1f1a',
+    fg: '#c9bca5',
+  },
+  {
+    id: 'tbd',
+    num: '03',
+    name: 'In Development',
+    role: 'Concept · Exploring',
+    year: '2026',
+    stack: ['TBD'],
+    type: 'Coming Soon',
+    tag: 'Planning',
+    summary:
+      'Third piece in progress. Currently between two directions — letting the idea cure.',
+    detail:
+      'Possible directions: a tactile metronome for writers, or a small CLI for journaling.',
+    repo: null,
+    accentLabel: '???',
+    bg: '#2a1f1a',
+    fg: '#c9bca5',
+  },
 ]
 
 const EXPERIENCE: ExperienceEntry[] = [
@@ -104,6 +123,33 @@ const EXPERIENCE: ExperienceEntry[] = [
     role: 'Front-end Developer',
     org: 'Redsquare Software Sdn Bhd',
     note: 'Built web & mobile apps in React and Flutter, from initiation to client handover',
+  },
+]
+
+const ARCHIVE: ArchiveProject[] = [
+  {
+    id: 'archive-app',
+    kind: 'app',
+    name: 'Xamble Creators-Influencer App',
+    company: 'Xamble Technologies Sdn Bhd',
+    role: 'Flutter Developer',
+    year: '2022',
+    summary:
+      'Worked on the Xamble Creators mobile app from the early concept stage through to its first release on Google Play. A platform that connects smaller influencer with brands for paid social media campaigns contributed to building the core parts of the experience, including creator sign-up and profiles, browsing and applying for campaigns, the in-app wallet with instant cash-out to a bank account, and an AI caption helper for creators.',
+    stack: ['Flutter', 'Dart', 'Bloc', 'Firebase'],
+    aspect: '9 / 19.5',
+  },
+  {
+    id: 'archive-web',
+    kind: 'web',
+    name: 'Sansols - Online Labour System',
+    company: 'Ukuya Sdn Bhd',
+    role: 'Flutter developer',
+    year: '2024',
+    summary:
+      'Contributed to SANSOLS, a government labour system for Sarawak state that replaced the legacy platform and cut worker and foreign-worker processing time from 6–9 months to just 1–2 weeks, serving both administrators and employers. Joined after the core platform was established and added a new license renewal feature, then introduced end-to-end testing with Playwright to strengthen reliability and catch regressions across critical user flows.',
+    stack: ['Flutter Web', 'Dart', 'Playwright', 'Typescript'],
+    aspect: '16 / 10',
   },
 ]
 
@@ -246,11 +292,14 @@ function TopBar({ theme, setTheme }: TopBarProps) {
         <a href="#work" className="pf-link">
           02 Work
         </a>
+        <a href="#archive" className="pf-link">
+          03 Archive
+        </a>
         <a href="#path" className="pf-link">
-          03 Path
+          04 Path
         </a>
         <a href="#contact" className="pf-link">
-          04 Contact
+          05 Contact
         </a>
       </nav>
 
@@ -430,7 +479,7 @@ function About() {
     'Supabase',
     'Figma',
     'Git',
-    'CI/CD',
+    'Claude',
   ]
   return (
     <section
@@ -641,67 +690,119 @@ function ProjectEntry({ project }: ProjectEntryProps) {
             style={{
               width: '100%',
               aspectRatio: '4 / 3',
-              background: project.bg,
-              color: project.fg,
-              backgroundImage: `repeating-linear-gradient(-45deg, ${project.fg}10 0px, ${project.fg}10 8px, transparent 8px, transparent 16px)`,
               position: 'relative',
               overflow: 'hidden',
+              border: '1px solid var(--rule-strong)',
+              background: 'var(--surface)',
             }}
           >
+            {project.bannerImg ? (
+              <img
+                src={project.bannerImg}
+                alt={project.name}
+                style={{
+                  position: 'absolute',
+                  inset: 0,
+                  width: '100%',
+                  height: '100%',
+                  objectFit: 'cover',
+                  display: 'block',
+                }}
+              />
+            ) : (
+              <div
+                style={{
+                  position: 'absolute',
+                  inset: 0,
+                  background: `repeating-linear-gradient(-45deg, rgba(239,228,208,0.06) 0px, rgba(239,228,208,0.06) 8px, transparent 8px, transparent 16px)`,
+                }}
+              />
+            )}
+
+            {/* Top-right chip: fixed ink/cream — never affected by banner colors */}
             <div
               style={{
                 position: 'absolute',
-                inset: 0,
-                display: 'flex',
-                alignItems: 'flex-end',
-                padding: 24,
-                transition: 'transform 600ms cubic-bezier(0.2,0.7,0.2,1)',
-                transform: hover ? 'translateY(0)' : 'translateY(4px)',
-              }}
-            >
-              <div>
-                <div
-                  className="pf-display"
-                  style={{
-                    fontSize: 56,
-                    lineHeight: 0.95,
-                    fontWeight: 500,
-                    letterSpacing: '-0.03em',
-                    color: project.fg,
-                  }}
-                >
-                  {project.name}
-                </div>
-                <div
-                  className="pf-mono"
-                  style={{
-                    fontSize: 10,
-                    letterSpacing: '0.16em',
-                    textTransform: 'uppercase',
-                    color: project.fg,
-                    opacity: 0.7,
-                    marginTop: 8,
-                  }}
-                >
-                  {project.accentLabel} / {project.year}
-                </div>
-              </div>
-            </div>
-            <div
-              style={{
-                position: 'absolute',
-                top: 16,
-                right: 16,
+                top: 14,
+                right: 14,
                 padding: '6px 10px',
-                border: `1px solid ${project.fg}40`,
+                background: '#16110d',
+                color: '#efe4d0',
                 fontFamily: "'JetBrains Mono', monospace",
                 fontSize: 9,
                 letterSpacing: '0.16em',
                 textTransform: 'uppercase',
-                color: project.fg,
+                display: 'flex',
+                alignItems: 'center',
+                gap: 8,
+                zIndex: 2,
               }}
             >
-              {project.tag}
+              <span>{project.accentLabel}</span>
+              <span style={{ opacity: 0.5 }}>/</span>
+              <span>{project.year}</span>
+            </div>
+
+            {/* Bottom shelf: theme-aware surface — always legible regardless of banner */}
+            <div
+              style={{
+                position: 'absolute',
+                left: 0,
+                right: 0,
+                bottom: 0,
+                padding: '14px 18px',
+                background: 'var(--surface)',
+                color: 'var(--surface-text)',
+                borderTop: '1px solid var(--rule-strong)',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'space-between',
+                gap: 16,
+                zIndex: 2,
+              }}
+            >
+              <div
+                style={{
+                  display: 'flex',
+                  alignItems: 'baseline',
+                  gap: 12,
+                  minWidth: 0,
+                }}
+              >
+                <span
+                  className="pf-display"
+                  style={{
+                    fontSize: 22,
+                    fontWeight: 500,
+                    letterSpacing: '-0.02em',
+                    whiteSpace: 'nowrap',
+                    overflow: 'hidden',
+                    textOverflow: 'ellipsis',
+                  }}
+                >
+                  {project.name}
+                </span>
+                <span
+                  className="pf-mono"
+                  style={{
+                    fontSize: 9,
+                    letterSpacing: '0.14em',
+                    textTransform: 'uppercase',
+                    color: 'var(--paper-dim)',
+                    flexShrink: 0,
+                  }}
+                >
+                  {project.tag}
+                </span>
+              </div>
+              <span
+                style={{
+                  color: 'var(--accent-deep)',
+                  transition: 'transform 320ms cubic-bezier(0.2,0.7,0.2,1)',
+                  transform: hover ? 'translate(3px, -3px)' : 'translate(0,0)',
+                  flexShrink: 0,
+                }}
+              ></span>
             </div>
           </div>
           <div
@@ -809,66 +910,471 @@ function Work() {
   )
 }
 
-// ===== Mid-page CTA =====
+// ===== Archive =====
 
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-function MidCTA() {
+function BrowserShot({
+  label,
+  aspect,
+  company,
+  src,
+}: {
+  label: string
+  aspect: string
+  company?: string
+  src?: string
+}) {
   return (
-    <section style={{ borderTop: '1px solid var(--rule-strong)' }}>
+    <div
+      style={{
+        border: '1px solid var(--rule-strong)',
+        background: '#16110d',
+        overflow: 'hidden',
+      }}
+    >
+      <div
+        style={{
+          height: 28,
+          display: 'flex',
+          alignItems: 'center',
+          gap: 8,
+          padding: '0 12px',
+          borderBottom: '1px solid rgba(239,228,208,0.15)',
+          background: 'rgba(0,0,0,0.25)',
+        }}
+      >
+        <span
+          style={{
+            width: 8,
+            height: 8,
+            borderRadius: '50%',
+            background: '#c8704d',
+          }}
+        />
+        <span
+          style={{
+            width: 8,
+            height: 8,
+            borderRadius: '50%',
+            background: '#d4a574',
+          }}
+        />
+        <span
+          style={{
+            width: 8,
+            height: 8,
+            borderRadius: '50%',
+            background: '#4a3b2a',
+          }}
+        />
+        <span
+          style={{
+            marginLeft: 16,
+            flex: 1,
+            height: 14,
+            background: 'rgba(255,255,255,0.05)',
+            border: '1px solid rgba(255,255,255,0.08)',
+            fontFamily: "'JetBrains Mono', monospace",
+            fontSize: 9,
+            color: 'rgba(239,228,208,0.4)',
+            letterSpacing: '0.08em',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+          }}
+        >
+          {company ?? ''}
+        </span>
+      </div>
+      <div style={{ aspectRatio: aspect, overflow: 'hidden' }}>
+        {src ? (
+          <img
+            src={src}
+            alt={label}
+            style={{
+              width: '100%',
+              height: '100%',
+              objectFit: 'contain',
+              display: 'block',
+            }}
+          />
+        ) : (
+          <div
+            style={{
+              width: '100%',
+              height: '100%',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              fontFamily: "'JetBrains Mono', monospace",
+              fontSize: 10,
+              letterSpacing: '0.1em',
+              textTransform: 'uppercase',
+              color: 'rgba(239,228,208,0.3)',
+            }}
+          >
+            {label}
+          </div>
+        )}
+      </div>
+    </div>
+  )
+}
+
+function PhoneShot({ label }: { label: string }) {
+  return (
+    <div
+      style={{
+        border: '1px solid var(--rule-strong)',
+        padding: 8,
+        background: 'var(--paper)',
+      }}
+    >
+      <div
+        style={{
+          position: 'relative',
+          aspectRatio: '9 / 19.5',
+          background: '#16110d',
+          overflow: 'hidden',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+        }}
+      >
+        <span
+          style={{
+            fontFamily: "'JetBrains Mono', monospace",
+            fontSize: 9,
+            letterSpacing: '0.1em',
+            textTransform: 'uppercase',
+            color: 'rgba(239,228,208,0.3)',
+          }}
+        >
+          {label}
+        </span>
+        <div
+          style={{
+            position: 'absolute',
+            top: 6,
+            left: '50%',
+            transform: 'translateX(-50%)',
+            width: 50,
+            height: 6,
+            borderRadius: 3,
+            background: 'rgba(0,0,0,0.5)',
+            pointerEvents: 'none',
+          }}
+        />
+      </div>
+      <div
+        className="pf-mono"
+        style={{
+          fontSize: 9,
+          letterSpacing: '0.1em',
+          textTransform: 'uppercase',
+          textAlign: 'center',
+          marginTop: 8,
+          color: 'var(--paper-dim)',
+        }}
+      >
+        {label}
+      </div>
+    </div>
+  )
+}
+
+interface ArchiveEntryProps {
+  project: ArchiveProject
+  index: number
+}
+
+function ArchiveEntry({ project, index }: ArchiveEntryProps) {
+  const isWeb = project.kind === 'web'
+  return (
+    <Reveal>
+      <article
+        className="pf-archive-entry"
+        style={{
+          display: 'grid',
+          gridTemplateColumns: '80px 1fr',
+          gap: 48,
+          padding: '56px 0',
+          borderTop: '1px solid var(--rule-strong)',
+        }}
+      >
+        <div
+          className="pf-display"
+          style={{
+            fontSize: 48,
+            fontWeight: 400,
+            color: 'var(--accent)',
+            lineHeight: 1,
+          }}
+        >
+          0{4 + index}
+        </div>
+
+        <div>
+          <div
+            className="pf-archive-meta"
+            style={{
+              display: 'grid',
+              gridTemplateColumns: '1fr 1fr',
+              gap: 56,
+              alignItems: 'baseline',
+              marginBottom: 32,
+            }}
+          >
+            <div>
+              <div
+                className="pf-mono"
+                style={{
+                  fontSize: 10,
+                  letterSpacing: '0.16em',
+                  textTransform: 'uppercase',
+                  color: 'var(--paper-dim)',
+                  marginBottom: 14,
+                }}
+              >
+                {isWeb ? 'Web · Dashboard' : 'Mobile · iOS + Android'} ·{' '}
+                {project.year}
+              </div>
+              <h3
+                className="pf-display"
+                style={{
+                  fontSize: 56,
+                  lineHeight: 1,
+                  fontWeight: 500,
+                  letterSpacing: '-0.025em',
+                  marginBottom: 16,
+                }}
+              >
+                {project.name}
+              </h3>
+              <div
+                className="pf-mono"
+                style={{
+                  fontSize: 11,
+                  letterSpacing: '0.1em',
+                  textTransform: 'uppercase',
+                  color: 'var(--paper-dim)',
+                }}
+              >
+                {project.role} · {project.company}
+              </div>
+            </div>
+            <div>
+              <p style={{ fontSize: 16, lineHeight: 1.55, marginBottom: 20 }}>
+                {project.summary}
+              </p>
+              <div style={{ display: 'flex', gap: 6, flexWrap: 'wrap' }}>
+                {project.stack.map((s) => (
+                  <span
+                    key={s}
+                    className="pf-mono"
+                    style={{
+                      fontSize: 10,
+                      letterSpacing: '0.1em',
+                      textTransform: 'uppercase',
+                      padding: '4px 9px',
+                      border: '1px solid var(--rule-strong)',
+                    }}
+                  >
+                    {s}
+                  </span>
+                ))}
+              </div>
+            </div>
+          </div>
+
+          {isWeb ? (
+            <div>
+              <div
+                className="pf-archive-web-strip"
+                style={{
+                  display: 'grid',
+                  gridTemplateColumns: '1.7fr 1fr',
+                  gap: 16,
+                }}
+              >
+                <div
+                  style={{
+                    display: 'grid',
+                    gridTemplateRows: 'repeat(2, 1fr)',
+                    gap: 16,
+                  }}
+                >
+                  <BrowserShot
+                    label="01 · Overview"
+                    aspect={project.aspect}
+                    company={project.company}
+                    src={archiveWeb01}
+                  />
+                  <BrowserShot
+                    label="05 · Form"
+                    aspect={project.aspect}
+                    company={project.company}
+                    src={archiveWeb05}
+                  />
+                </div>
+                <div
+                  style={{
+                    display: 'grid',
+                    gridTemplateRows: 'repeat(3, 1fr)',
+                    gap: 16,
+                  }}
+                >
+                  <BrowserShot
+                    label="02 · Table view"
+                    aspect={project.aspect}
+                    company={project.company}
+                    src={archiveWeb02}
+                  />
+                  <BrowserShot
+                    label="03 · Detail"
+                    aspect={project.aspect}
+                    company={project.company}
+                    src={archiveWeb03}
+                  />
+                  <BrowserShot
+                    label="04 · Settings"
+                    aspect={project.aspect}
+                    company={project.company}
+                    src={archiveWeb04}
+                  />
+                </div>
+              </div>
+              <div
+                style={{
+                  marginTop: 14,
+                  fontFamily: "'JetBrains Mono', monospace",
+                  fontSize: 10,
+                  letterSpacing: '0.12em',
+                  textTransform: 'uppercase',
+                  color: 'var(--paper-dim)',
+                }}
+              >
+                05 screens · {project.company}
+              </div>
+            </div>
+          ) : (
+            <div>
+              <div
+                className="pf-archive-app-strip"
+                style={{
+                  display: 'grid',
+                  gridTemplateColumns: 'repeat(5, 1fr)',
+                  gap: 16,
+                }}
+              >
+                {[
+                  '01 · Onboarding',
+                  '02 · Home',
+                  '03 · Rewards',
+                  '04 · In-store map',
+                  '05 · Profile',
+                ].map((label) => (
+                  <PhoneShot key={label} label={label} />
+                ))}
+              </div>
+              <div
+                style={{
+                  marginTop: 14,
+                  fontFamily: "'JetBrains Mono', monospace",
+                  fontSize: 10,
+                  letterSpacing: '0.12em',
+                  textTransform: 'uppercase',
+                  color: 'var(--paper-dim)',
+                }}
+              >
+                05 screens · iOS shown · {project.company}
+              </div>
+            </div>
+          )}
+        </div>
+      </article>
+    </Reveal>
+  )
+}
+
+function Archive() {
+  return (
+    <section
+      id="archive"
+      className="pf-section"
+      style={{
+        padding: '100px 56px',
+        borderTop: '1px solid var(--rule-strong)',
+      }}
+    >
       <Reveal>
-        <a href={`mailto:${CONTACT_EMAIL}`} className="pf-mid-cta">
+        <div
+          style={{
+            display: 'flex',
+            justifyContent: 'space-between',
+            alignItems: 'baseline',
+            marginBottom: 16,
+          }}
+        >
           <div
             className="pf-mono"
             style={{
               fontSize: 10,
               letterSpacing: '0.16em',
               textTransform: 'uppercase',
-              opacity: 0.55,
+              color: 'var(--accent-deep)',
             }}
           >
-            ↳ Interlude
-          </div>
-          <div>
-            <div
-              className="pf-display"
-              style={{
-                fontSize: 56,
-                lineHeight: 1.05,
-                fontWeight: 400,
-                letterSpacing: '-0.025em',
-              }}
-            >
-              Like what you see?{' '}
-              <em
-                style={{
-                  fontStyle: 'italic',
-                  fontWeight: 300,
-                  color: 'var(--accent)',
-                }}
-              >
-                Let&apos;s talk.
-              </em>
-            </div>
-            <div style={{ fontSize: 14, marginTop: 10, opacity: 0.7 }}>
-              {CONTACT_EMAIL} — replies within a day
-            </div>
+            § 03 · Archive
           </div>
           <div
+            className="pf-mono"
             style={{
-              width: 56,
-              height: 56,
-              borderRadius: '50%',
-              border: '1px solid currentColor',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              flexShrink: 0,
+              fontSize: 10,
+              letterSpacing: '0.16em',
+              textTransform: 'uppercase',
+              color: 'var(--paper-dim)',
             }}
           >
-            <ArrowUpRight size={20} />
+            Previous roles · 2022–24
           </div>
-        </a>
+        </div>
       </Reveal>
+      <Reveal>
+        <h2
+          className="pf-display pf-archive-h2"
+          style={{
+            fontSize: 96,
+            lineHeight: 1,
+            fontWeight: 400,
+            letterSpacing: '-0.03em',
+            marginBottom: 24,
+            maxWidth: 1100,
+          }}
+        >
+          Work from a{' '}
+          <em style={{ fontStyle: 'italic', fontWeight: 300 }}>previous</em>{' '}
+          role — shown in screens, not links.
+        </h2>
+      </Reveal>
+      <Reveal>
+        <p
+          style={{
+            fontSize: 16,
+            lineHeight: 1.55,
+            maxWidth: 720,
+            color: 'var(--paper-dim)',
+            marginBottom: 64,
+          }}
+        >
+          Two of the projects I shipped at my last position. Client and
+          identifying details are withheld; happy to talk through the decisions
+          in conversation.
+        </p>
+      </Reveal>
+
+      {ARCHIVE.map((p, i) => (
+        <ArchiveEntry key={p.id} project={p} index={i} />
+      ))}
     </section>
   )
 }
@@ -903,7 +1409,7 @@ function Experience() {
               color: 'var(--accent-deep)',
             }}
           >
-            § 03
+            § 04
             <br />
             Path
           </div>
@@ -990,7 +1496,88 @@ function Experience() {
 
 // ===== Contact =====
 
+interface ContactCardData {
+  label: string
+  title: string
+  href: string
+  meta: string
+  external?: boolean
+  download?: string
+}
+
+function ContactCard({
+  label,
+  title,
+  href,
+  meta,
+  external,
+  download,
+}: ContactCardData) {
+  return (
+    <a
+      href={href}
+      target={external ? '_blank' : undefined}
+      rel={external ? 'noopener noreferrer' : undefined}
+      download={download}
+      className="pf-contact-link"
+    >
+      <div>
+        <div
+          className="pf-mono"
+          style={{
+            fontSize: 10,
+            letterSpacing: '0.16em',
+            textTransform: 'uppercase',
+            opacity: 0.6,
+            marginBottom: 14,
+          }}
+        >
+          {label}
+        </div>
+        <div
+          className="pf-display"
+          style={{
+            fontSize: 28,
+            lineHeight: 1.1,
+            fontWeight: 500,
+            letterSpacing: '-0.02em',
+          }}
+        >
+          {title}
+        </div>
+        <div style={{ fontSize: 12, marginTop: 10, opacity: 0.55 }}>{meta}</div>
+      </div>
+      <div className="pf-contact-arrow">
+        <ArrowUpRight size={22} />
+      </div>
+    </a>
+  )
+}
+
 function Contact() {
+  const cards: ContactCardData[] = [
+    {
+      label: 'Email',
+      title: CONTACT_EMAIL,
+      href: `mailto:${CONTACT_EMAIL}`,
+      meta: 'Replies within a day',
+    },
+    {
+      label: 'Download',
+      title: 'Resume · PDF',
+      href: '/wan-adila-resume.pdf',
+      meta: 'Updated May 2026',
+      download: 'wan-adila-resume.pdf',
+    },
+    {
+      label: 'GitHub',
+      title: '@WanNurAdila',
+      href: 'https://github.com/WanNurAdila',
+      meta: 'github.com/WanNurAdila',
+      external: true,
+    },
+  ]
+
   return (
     <section
       id="contact"
@@ -1013,7 +1600,7 @@ function Contact() {
               color: 'var(--accent-deep)',
             }}
           >
-            § 04
+            § 05
             <br />
             Contact
           </div>
@@ -1044,63 +1631,15 @@ function Contact() {
               style={{
                 marginTop: 60,
                 display: 'grid',
-                gridTemplateColumns: '1fr 1fr',
+                gridTemplateColumns: 'repeat(3, 1fr)',
                 gap: 1,
                 background: 'var(--rule-strong)',
                 border: '1px solid var(--rule-strong)',
               }}
             >
-              <a href={`mailto:${CONTACT_EMAIL}`} className="pf-contact-link">
-                <div>
-                  <div
-                    className="pf-mono"
-                    style={{
-                      fontSize: 10,
-                      letterSpacing: '0.16em',
-                      textTransform: 'uppercase',
-                      marginBottom: 6,
-                      opacity: 0.6,
-                    }}
-                  >
-                    Email
-                  </div>
-                  <div
-                    className="pf-display"
-                    style={{ fontSize: 24, fontWeight: 500 }}
-                  >
-                    {CONTACT_EMAIL}
-                  </div>
-                </div>
-                <ArrowUpRight size={20} />
-              </a>
-              <a
-                href="https://github.com/WanNurAdila"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="pf-contact-link"
-              >
-                <div>
-                  <div
-                    className="pf-mono"
-                    style={{
-                      fontSize: 10,
-                      letterSpacing: '0.16em',
-                      textTransform: 'uppercase',
-                      marginBottom: 6,
-                      opacity: 0.6,
-                    }}
-                  >
-                    GitHub
-                  </div>
-                  <div
-                    className="pf-display"
-                    style={{ fontSize: 24, fontWeight: 500 }}
-                  >
-                    github.com/WanNurAdila
-                  </div>
-                </div>
-                <ArrowUpRight size={20} />
-              </a>
+              {cards.map((c) => (
+                <ContactCard key={c.label} {...c} />
+              ))}
             </div>
           </div>
         </div>
@@ -1130,7 +1669,7 @@ function Footer() {
       <span style={{ textAlign: 'center' }}>
         Set in Space Grotesk &amp; Inter
       </span>
-      <span style={{ textAlign: 'right' }}>Index v01 · Issue 05.25</span>
+      <span style={{ textAlign: 'right' }}>Index v01 · Issue 05.26</span>
     </footer>
   )
 }
@@ -1146,7 +1685,7 @@ export default function App() {
       <Hero />
       <About />
       <Work />
-      {/* <MidCTA /> */}
+      <Archive />
       <Experience />
       <Contact />
       <Footer />
