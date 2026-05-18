@@ -6,6 +6,11 @@ import archiveWeb02 from './assets/archive-web-02.png'
 import archiveWeb03 from './assets/archive-web-03.png'
 import archiveWeb04 from './assets/archive-web-04.png'
 import archiveWeb05 from './assets/archive-web-05.png'
+import archiveApp01 from './assets/archive-app-01.png'
+import archiveApp02 from './assets/archive-app-02.png'
+import archiveApp03 from './assets/archive-app-03.png'
+import archiveApp04 from './assets/archive-app-04.png'
+import archiveApp05 from './assets/archive-app-05.png'
 
 // ===== Types =====
 
@@ -135,7 +140,7 @@ const ARCHIVE: ArchiveProject[] = [
     role: 'Flutter Developer',
     year: '2022',
     summary:
-      'Worked on the Xamble Creators mobile app from the early concept stage through to its first release on Google Play. A platform that connects smaller influencer with brands for paid social media campaigns contributed to building the core parts of the experience, including creator sign-up and profiles, browsing and applying for campaigns, the in-app wallet with instant cash-out to a bank account, and an AI caption helper for creators.',
+      'Worked on the Xamble Creators mobile app from the early concept stage through to its first release on Google Play. A platform that connects smaller influencers with brands for paid social media campaigns contributed to building the core parts of the experience, including creator sign-up and profiles, browsing and applying for campaigns, an in-app cash-out request flow that submits payout tickets to the backend for finance processing.',
     stack: ['Flutter', 'Dart', 'Bloc', 'Firebase'],
     aspect: '9 / 19.5',
   },
@@ -1020,7 +1025,7 @@ function BrowserShot({
   )
 }
 
-function PhoneShot({ label }: { label: string }) {
+function PhoneShot({ label, src }: { label: string; src?: string }) {
   return (
     <div
       style={{
@@ -1040,17 +1045,30 @@ function PhoneShot({ label }: { label: string }) {
           justifyContent: 'center',
         }}
       >
-        <span
-          style={{
-            fontFamily: "'JetBrains Mono', monospace",
-            fontSize: 9,
-            letterSpacing: '0.1em',
-            textTransform: 'uppercase',
-            color: 'rgba(239,228,208,0.3)',
-          }}
-        >
-          {label}
-        </span>
+        {src ? (
+          <img
+            src={src}
+            alt={label}
+            style={{
+              width: '100%',
+              height: '100%',
+              objectFit: 'cover',
+              display: 'block',
+            }}
+          />
+        ) : (
+          <span
+            style={{
+              fontFamily: "'JetBrains Mono', monospace",
+              fontSize: 9,
+              letterSpacing: '0.1em',
+              textTransform: 'uppercase',
+              color: 'rgba(239,228,208,0.3)',
+            }}
+          >
+            {label}
+          </span>
+        )}
         <div
           style={{
             position: 'absolute',
@@ -1267,13 +1285,13 @@ function ArchiveEntry({ project, index }: ArchiveEntryProps) {
                 }}
               >
                 {[
-                  '01 · Onboarding',
-                  '02 · Home',
-                  '03 · Rewards',
-                  '04 · In-store map',
-                  '05 · Profile',
-                ].map((label) => (
-                  <PhoneShot key={label} label={label} />
+                  { label: '01 · Login', src: archiveApp01 },
+                  { label: '02 · Home', src: archiveApp02 },
+                  { label: '03 · Detail', src: archiveApp03 },
+                  { label: '04 · Profile', src: archiveApp04 },
+                  { label: '05 · Setting', src: archiveApp05 },
+                ].map(({ label, src }) => (
+                  <PhoneShot key={label} label={label} src={src} />
                 ))}
               </div>
               <div
