@@ -60,9 +60,12 @@ const PROJECTS: Project[] = [
     name: 'Rhythm App',
     role: 'Solo · Design + Build',
     year: '2026',
-    stack: ['Flutter', 'Bloc Architecture', 'Supabase', 'Claude'],
-    type: 'Mobile App',
-    tag: 'Flutter · Android',
+    // stack: ['Flutter', 'Bloc Architecture', 'Supabase', 'Claude'],
+    // type: 'Mobile App',
+    // tag: 'Flutter · Android',
+    stack: ['TBD'],
+    type: 'Coming Soon',
+    tag: 'Planning',
     summary:
       'A warm, quiet habit tracker. Rituals replace streaks; reflection replaces guilt.',
     detail:
@@ -91,9 +94,9 @@ const PROJECTS: Project[] = [
     fg: '#c9bca5',
   },
   {
-    id: 'tbd',
+    id: 'Pocketly',
     num: '03',
-    name: 'In Development',
+    name: 'Pocketly',
     role: 'Concept · Exploring',
     year: '2026',
     stack: ['TBD'],
@@ -102,7 +105,7 @@ const PROJECTS: Project[] = [
     summary:
       'Third piece in progress. Currently between two directions — letting the idea cure.',
     detail:
-      'Possible directions: a tactile metronome for writers, or a small CLI for journaling.',
+      'A budgeting app focused on mindful spending. A place to check in with your money, set gentle limits, and reflect on your habits without judgment.',
     repo: null,
     accentLabel: '???',
     bg: '#2a1f1a',
