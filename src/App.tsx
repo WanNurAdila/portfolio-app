@@ -106,7 +106,7 @@ const PROJECTS: Project[] = [
       'Third piece in progress. Currently between two directions — letting the idea cure.',
     detail:
       'A budgeting app focused on mindful spending. A place to check in with your money, set gentle limits, and reflect on your habits without judgment.',
-    repo: null,
+    repo: 'WanNurAdila/pocketly',
     accentLabel: '???',
     bg: '#2a1f1a',
     fg: '#c9bca5',
