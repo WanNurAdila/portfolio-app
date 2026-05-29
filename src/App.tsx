@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef, RefObject } from 'react'
 import './App.css'
+import pocketlyBanner from './assets/pocketly-banner.png'
 import rhythmBanner from './assets/rhythm-app-banner.png'
 import archiveWeb01 from './assets/archive-web-01.png'
 import archiveWeb02 from './assets/archive-web-02.png'
@@ -54,9 +55,28 @@ interface ArchiveProject {
 // ===== Data =====
 
 const PROJECTS: Project[] = [
+    {
+    id: 'Pocketly',
+    num: '01',
+    name: 'Pocketly',
+    role: 'Solo · Design + Build · Testing',
+    year: '2026',
+    stack: ['Vue.js', 'React', 'Playwright', 'Robot Framework'],
+    type: 'Website · Automation',
+    tag: 'Playwright · Robot Framework',
+    summary:
+      'Third piece in progress. Currently between two directions — letting the idea cure.',
+    detail:
+      'A demo website to showcase my automation work with Playwright and Robot Framework. ',
+    repo: 'WanNurAdila/pocketly',
+    accentLabel: 'F-01',
+    bg: '#2a1f1a',
+    fg: '#c9bca5',
+    bannerImg: pocketlyBanner,
+  },
   {
     id: 'Rhythm',
-    num: '01',
+    num: '02',
     name: 'Rhythm App',
     role: 'Solo · Design + Build',
     year: '2026',
@@ -71,14 +91,14 @@ const PROJECTS: Project[] = [
     detail:
       'A Flutter app focused on slow, deliberate routines. Custom motion, on-device storage, weekly reflection prompts. Designed in Claude Design. A portfolio build of the Android APK and an iOS walkthrough are on the repo.',
     repo: 'WanNurAdila/rhythm-app',
-    accentLabel: 'F-01',
+    accentLabel: 'F-02',
     bg: '#3d2a1a',
     fg: '#efd5b0',
     bannerImg: rhythmBanner,
   },
   {
     id: 'tbd',
-    num: '02',
+    num: '03',
     name: 'In Development',
     role: 'Concept · Exploring',
     year: '2026',
@@ -89,24 +109,6 @@ const PROJECTS: Project[] = [
       'Second piece in progress. Currently between two directions — letting the idea cure.',
     detail: 'Possible directions: a dashboard version of Pulse.',
     repo: null,
-    accentLabel: '???',
-    bg: '#2a1f1a',
-    fg: '#c9bca5',
-  },
-  {
-    id: 'Pocketly',
-    num: '03',
-    name: 'Pocketly',
-    role: 'Concept · Exploring',
-    year: '2026',
-    stack: ['TBD'],
-    type: 'Coming Soon',
-    tag: 'Planning',
-    summary:
-      'Third piece in progress. Currently between two directions — letting the idea cure.',
-    detail:
-      'A budgeting app focused on mindful spending. A place to check in with your money, set gentle limits, and reflect on your habits without judgment.',
-    repo: 'WanNurAdila/pocketly',
     accentLabel: '???',
     bg: '#2a1f1a',
     fg: '#c9bca5',
