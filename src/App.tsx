@@ -65,7 +65,7 @@ const PROJECTS: Project[] = [
     type: 'Website · Automation',
     tag: 'Playwright · Robot Framework',
     summary:
-      'Third piece in progress. Currently between two directions — letting the idea cure.',
+      'Tracking your Finance with style.',
     detail:
       'A demo website to showcase my automation work with Playwright and Robot Framework. ',
     repo: 'WanNurAdila/pocketly',
