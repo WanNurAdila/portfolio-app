@@ -267,7 +267,7 @@ interface TopBarProps {
 function TopBar({ theme, setTheme }: TopBarProps) {
   return (
     <header
-      className="pf-topbar"
+      className="pf-topBar"
       style={{
         position: 'sticky',
         top: 0,
@@ -289,7 +289,7 @@ function TopBar({ theme, setTheme }: TopBarProps) {
     >
       <div style={{ display: 'flex', gap: 14, alignItems: 'center' }}>
         <span style={{ fontWeight: 600 }}>WAN ADILA</span>
-        <span style={{ color: 'var(--paper-dim)' }}>/ INDEX</span>
+        <span className="pf-topBar-index" style={{ color: 'var(--paper-dim)' }}>/ INDEX</span>
       </div>
 
       <nav
@@ -322,6 +322,7 @@ function TopBar({ theme, setTheme }: TopBarProps) {
         }}
       >
         <span
+          className="pf-topBar-available"
           style={{
             color: 'var(--paper-dim)',
             display: 'inline-flex',
@@ -1416,6 +1417,7 @@ function Experience() {
     >
       <Reveal>
         <div
+          className="pf-exp-header"
           style={{
             display: 'grid',
             gridTemplateColumns: '120px 1fr',
@@ -1612,6 +1614,7 @@ function Contact() {
     >
       <Reveal>
         <div
+          className="pf-contact-layout"
           style={{ display: 'grid', gridTemplateColumns: '120px 1fr', gap: 56 }}
         >
           <div

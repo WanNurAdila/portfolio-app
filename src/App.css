@@ -334,7 +334,7 @@
   .pf-nav-links {
     display: none !important;
   }
-  .pf-topbar {
+  .pf-topBar {
     padding: 16px 24px !important;
   }
   .pf-section {
@@ -349,5 +349,107 @@
   }
   .pf-contact-h2 {
     font-size: 72px !important;
+  }
+}
+
+@media (max-width: 600px) {
+  /* Topbar: 2-col, hide secondary labels */
+  .pf-topBar {
+    grid-template-columns: 1fr auto !important;
+    padding: 14px 16px !important;
+  }
+  .pf-topBar-index {
+    display: none;
+  }
+  .pf-topBar-available {
+    display: none;
+  }
+
+  /* Tighter horizontal gutters */
+  .pf-section {
+    padding-left: 16px !important;
+    padding-right: 16px !important;
+  }
+
+  /* Hero */
+  .pf-hero-h1 {
+    font-size: 48px !important;
+  }
+  .pf-stats-grid {
+    grid-template-columns: 1fr 1fr !important;
+  }
+
+  /* About: full single column */
+  .pf-about-grid {
+    grid-template-columns: 1fr !important;
+    gap: 20px !important;
+  }
+  .pf-about-grid > *:last-child {
+    grid-column: 1 !important;
+  }
+
+  /* Work */
+  .pf-work-h2 {
+    font-size: 38px !important;
+    margin-bottom: 40px !important;
+  }
+  .pf-work-entry {
+    gap: 20px !important;
+    padding: 32px 0 !important;
+  }
+  .pf-project-name {
+    font-size: 34px !important;
+  }
+
+  /* Archive */
+  .pf-archive-h2 {
+    font-size: 38px !important;
+  }
+  .pf-archive-entry {
+    gap: 20px !important;
+    padding: 40px 0 !important;
+  }
+  .pf-archive-app-strip {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+  .pf-archive-meta {
+    gap: 24px !important;
+  }
+
+  /* Experience: vertical stack */
+  .pf-exp-header {
+    grid-template-columns: 1fr !important;
+    gap: 16px !important;
+    margin-bottom: 32px !important;
+  }
+  .pf-exp-row {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 6px !important;
+    padding: 20px 0 !important;
+  }
+
+  /* Contact */
+  .pf-contact-layout {
+    grid-template-columns: 1fr !important;
+    gap: 24px !important;
+  }
+  .pf-contact-h2 {
+    font-size: 48px !important;
+  }
+  .pf-contact-link {
+    min-height: 140px !important;
+    padding: 24px 20px !important;
+  }
+
+  /* Footer: single column */
+  footer {
+    grid-template-columns: 1fr !important;
+    gap: 8px !important;
+    padding: 24px 16px !important;
+  }
+  footer span:nth-child(2),
+  footer span:nth-child(3) {
+    text-align: left !important;
   }
 }
